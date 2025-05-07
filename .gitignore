@@ -1,0 +1,39 @@
+# Ambientes virtuais
+.venv/
+env/
+venv/
+
+# Arquivos do Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# Arquivos temporários / cache
+*.log
+*.tmp
+*.bak
+*.swp
+.DS_Store
+
+# Modelos e dados sensíveis
+*.pkl
+*.joblib
+*.h5
+
+# Arquivos de Streamlit (se criados automaticamente)
+.streamlit/
+
+# Dados brutos (caso deseje evitar versionar dados grandes)
+data/*.csv
+
+# Vídeos e gravações (se for grande, use git-lfs ou evite versionar)
+*.mp4
+*.avi
+*.mov
+
+# Configurações locais
+.vscode/
