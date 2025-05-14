@@ -1,39 +1,50 @@
-# Ambientes virtuais
-.venv/
-env/
+# Ambiente virtual
 venv/
+.env/
+.venv/
 
 # Arquivos do Python
 __pycache__/
 *.py[cod]
-*.pyo
-*.pyd
+*$py.class
 
-# Jupyter Notebook Checkpoints
-.ipynb_checkpoints/
-
-# Arquivos temporários / cache
-*.log
-*.tmp
-*.bak
+# Arquivos de configuração e IDE
+.idea/
+.vscode/
 *.swp
-.DS_Store
+*.swo
 
-# Modelos e dados sensíveis
+# Arquivos de dados e cache
+*.csv
+*.parquet
+*.xlsx
+*.json
 *.pkl
-*.joblib
-*.h5
+*.pickle
+*.db
+*.sqlite
+*.log
 
-# Arquivos de Streamlit (se criados automaticamente)
+# Streamlit (se aplicável)
 .streamlit/
 
-# Dados brutos (caso deseje evitar versionar dados grandes)
-data/*.csv
+# Builds e distribuições
+build/
+dist/
+*.egg-info/
+*.egg
 
-# Vídeos e gravações (se for grande, use git-lfs ou evite versionar)
-*.mp4
-*.avi
-*.mov
+# Jupyter Notebooks (se houver)
+.ipynb_checkpoints/
+*.ipynb
 
-# Configurações locais
-.vscode/
+# Testes e cobertura
+.coverage
+htmlcov/
+.pytest_cache/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
