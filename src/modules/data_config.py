@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-from function import (
+from functions import (
     process_duplicates,
     process_missing,
     process_outliers,

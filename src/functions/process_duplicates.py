@@ -16,7 +16,6 @@ def check_duplicates(df):
             option = st.radio(
                 "Como deseja tratar os dados duplicados?",
                 options=[
-                    "Manter todas as linhas (incluindo duplicatas)",
                     "Remover todas as linhas duplicadas (manter apenas a primeira ocorrência)",
                     "Remover todas as linhas duplicadas (manter apenas a última ocorrência)",
                     "Manter apenas linhas que NÃO são duplicatas (remover TODAS as ocorrências de duplicatas)"
