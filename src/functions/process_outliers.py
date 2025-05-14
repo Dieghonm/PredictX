@@ -80,7 +80,7 @@ def handle_outliers(df, numeric_cols=None):
 
         coluna_analise = st.selectbox(
             "Selecione a coluna para análise:",
-            numeric_cols,
+            options=numeric_cols[::-1],
             key="coluna_outlier"
         )
         
