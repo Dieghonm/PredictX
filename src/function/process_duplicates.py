@@ -1,5 +1,5 @@
 import streamlit as st
-import pandas as pd
+
 
 def check_duplicates(df):
     """
@@ -11,10 +11,6 @@ def check_duplicates(df):
     if total_duplicados > 0:
         with st.expander("🔍 **Verificação de Dados Duplicados**", expanded=True):
             st.warning(f"⚠️ **{total_duplicados} linhas duplicadas** encontradas no dataset")
-            
-            # Mostrar estatísticas dos duplicados
-            dup_stats = df[df.duplicated(keep=False)].groupby(df.columns.tolist()).size().reset_index(name='Contagem')
-            st.dataframe(dup_stats.sort_values('Contagem', ascending=False))
             
             # Opções para o usuário
             option = st.radio(
@@ -39,5 +35,9 @@ def check_duplicates(df):
                 st.success(f"✅ {total_duplicados - df.duplicated().sum()} linhas duplicadas removidas")
                 st.session_state.df = df
                 st.rerun()
+
+            # Mostrar estatísticas dos duplicados
+            dup_stats = df[df.duplicated(keep=False)].groupby(df.columns.tolist()).size().reset_index(name='Contagem')
+            st.dataframe(dup_stats.sort_values('Contagem', ascending=False))
     
     return df

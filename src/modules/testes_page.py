@@ -12,11 +12,11 @@ def _setup_page_config():
     """, unsafe_allow_html=True)
 
 def mostrar():
-    st.title("⚙️ Opções")
+    st.title("📊 Visualização da Planilha")
     _setup_page_config()
-
+    
     if st.session_state.df is not None:
-        df = st.session_state.df.copy()
+        st.dataframe(st.session_state.df.head(100))
 
     else:
-        st.warning("⚠️ Carregue os dados na aba **Data**.")
+        st.warning("⚠️ Nenhum dado carregado. Vá para a aba **Data**.")

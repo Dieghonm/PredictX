@@ -20,5 +20,12 @@ def select_target(df, colunas):
         
         if len(df[target_col].unique()) > 10:
             st.warning("⚠️ Esta coluna tem muitos valores únicos. Verifique se é realmente uma variável alvo adequada.")
-    
+        
+        
+        if st.button(f"Selecionar {target_col} como alvo "):
+            st.session_state.target = target_col
+            st.rerun()
+        
+
+
     return target_col

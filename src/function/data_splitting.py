@@ -108,6 +108,10 @@ def data_splitting_options(df, colunas):
         )
 
         if metodo_divisao == "Por porcentagem":
-            return split_data_by_percentage()
+            split= split_data_by_percentage()
         else:
-            return split_data_by_column(df, colunas)
+            split= split_data_by_column(df, colunas)
+        
+        if st.button("Guardar divisão"):
+            st.session_state.split = split
+            st.rerun()

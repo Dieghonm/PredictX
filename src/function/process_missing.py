@@ -1,6 +1,19 @@
 import pandas as pd
 import streamlit as st
 
+def get_missing_data_stats(df):
+    total_linhas = len(df)
+    dados_faltantes = df.isna().sum()
+    dados_faltantes_pct = (dados_faltantes / total_linhas * 100).round(2)
+    
+    faltantes_df = pd.DataFrame({
+        "Coluna": dados_faltantes.index,
+        "Qtd. Faltantes": dados_faltantes.values,
+        "% Faltantes": dados_faltantes_pct.values
+    }).sort_values(by="% Faltantes", ascending=False)
+    
+    return faltantes_df[faltantes_df["Qtd. Faltantes"] > 0]
+
 def handle_missing_values(df, faltantes_df):
     with st.expander("❗ **Tratamento de variável missing**", expanded=True):
         st.warning(f"⚠️ **{len(faltantes_df)} colunas com dados faltantes**")

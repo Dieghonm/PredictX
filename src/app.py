@@ -1,10 +1,11 @@
 import streamlit as st
 from modules import (
-    configuracoes_page,
     data_page,
     planilha_page,
     graficos_page,
-    opcoes_page
+    opcoes_page,
+    testes_page,
+    data_config
 )
 
 # Configurações iniciais da página
@@ -21,6 +22,12 @@ def inicializar_session_state():
         st.session_state.pagina = "Data"
     if "df" not in st.session_state:
         st.session_state.df = None
+    if 'outlier_check' not in st.session_state:
+        st.session_state.outlier_check = False
+    if 'target' not in st.session_state:
+        st.session_state.target = None
+    if 'split' not in st.session_state:
+        st.session_state.split = None
 
 # Navegação entre páginas
 def navegacao_sidebar():
@@ -29,10 +36,11 @@ def navegacao_sidebar():
     # Dicionário de páginas para facilitar a manutenção
     paginas = {
         "📂 Data": "Data",
-        "⚙️ Configurações": "Configuracoes",
+        "🛠️ Data config" : "Data config",
         "📊 Planilha": "Planilha",
         "📈 Gráficos": "Gráficos",
-        "🔧 Opções": "Opções"
+        "🔧 Opções": "Opções",
+        "🔧 Testes": "Testes"
     }
     
     for texto_botao, pagina_nome in paginas.items():
@@ -43,10 +51,11 @@ def navegacao_sidebar():
 def renderizar_pagina():
     paginas = {
         "Data": data_page.mostrar,
-        "Configuracoes": configuracoes_page.mostrar,
+        "Data config": data_config.mostrar,
         "Planilha": planilha_page.mostrar,
         "Gráficos": graficos_page.mostrar,
-        "Opções": opcoes_page.mostrar
+        "Opções": opcoes_page.mostrar,
+        "Testes": testes_page.mostrar
     }
     
     pagina_atual = st.session_state.pagina
