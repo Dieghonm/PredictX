@@ -5,8 +5,12 @@ from functions import (
     process_duplicates,
     process_missing,
     process_outliers,
+    process_datetime,
+    process_normalization,
+    process_dummies,
     target_selection,
-    data_splitting
+    data_splitting,
+    config_buttons,
 )
 
 def _setup_page_config():
@@ -38,15 +42,42 @@ def mostrar():
         
         elif not st.session_state.outlier_check:
             df = process_outliers.handle_outliers(df, numeric_cols)
+        
+        elif not st.session_state.datetime:
+            df = process_datetime.datetime_options(df)
+            st.session_state.datetime_processed = True
+            st.session_state.df = df 
+
+        elif not st.session_state.normalization:
+            process_normalization.normalizar_dataframe(df)
+            
+        elif False:
+            st.info(f"scaling...")
+            
+        elif False:
+            st.info(f"encoding")
+            
+        elif True:
+            st.info(f"dumies")
+            process_dummies.criar_dummies_dataframe(df)
+            
+        elif False:
+            st.info(f"else")
+            
+        elif False:
+            st.info(f"else")
 
         elif not st.session_state.target :
             target_selection.select_target(df, colunas)
-
+            
         elif not st.session_state.split:
             data_splitting.data_splitting_options(df, colunas)
    
         else:
             st.info(f"else")
+        config_buttons.config_buttons()
+
+            
    
 
     else:

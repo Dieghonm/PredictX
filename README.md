@@ -114,3 +114,8 @@ streamlit run app.py
 5. Adicione um **guia de contribuição** se for projeto aberto
 
 Você quer que eu desenvolva alguma seção específica com mais detalhes? Ou ajustar algo neste modelo?
+
+
+
+
+Rodar localmente - streamlit run src/app.py

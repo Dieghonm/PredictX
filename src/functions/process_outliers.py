@@ -3,6 +3,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 
+from functions import (
+    time_spinner,
+)
+
 def get_numeric_columns(df):
     """Retorna colunas numéricas do DataFrame"""
     return df.select_dtypes(include=['int64', 'float64']).columns.tolist()
@@ -98,8 +102,12 @@ def handle_outliers(df, numeric_cols=None):
                     st.metric("Outliers encontrados", len(outliers))
                     st.metric("Percentual de outliers", f"{percent_outliers}%")
                 if len(outliers):
-                    # Visualização dos dados
-                    st.pyplot(plot_outliers(df, coluna_analise))
+
+                    loading = time_spinner.spinner_personalizado("Analisando outliers...")
+                    st.empty()
+                    fig = plot_outliers(df, coluna_analise)
+                    loading.empty()
+                    st.pyplot(fig)
                     
                     # Seção de ajuste de outliers
                     st.markdown("---")

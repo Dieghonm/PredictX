@@ -28,6 +28,11 @@ def inicializar_session_state():
         st.session_state.target = None
     if 'split' not in st.session_state:
         st.session_state.split = None
+    if 'datetime' not in st.session_state:
+        st.session_state.datetime = False
+    if 'normalization' not in st.session_state:
+        st.session_state.normalization = False
+
 
 # Navegação entre páginas
 def navegacao_sidebar():
