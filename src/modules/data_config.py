@@ -11,6 +11,7 @@ from functions import (
     target_selection,
     data_splitting,
     config_buttons,
+    show_preprocessing
 )
 
 def _setup_page_config():
@@ -57,10 +58,6 @@ def mostrar():
         elif False:
             st.info(f"encoding")
             
-        elif True:
-            st.info(f"dumies")
-            process_dummies.criar_dummies_dataframe(df)
-            
         elif False:
             st.info(f"else")
             
@@ -69,16 +66,16 @@ def mostrar():
 
         elif not st.session_state.target :
             target_selection.select_target(df, colunas)
+
+        elif not st.session_state.dummies:
+            process_dummies.criar_dummies_dataframe(df)
             
         elif not st.session_state.split:
             data_splitting.data_splitting_options(df, colunas)
    
         else:
-            st.info(f"else")
+            show_preprocessing.show_preprocessing_results()
         config_buttons.config_buttons()
-
-            
-   
 
     else:
         st.warning("⚠️ Carregue os dados na aba **Data**.")

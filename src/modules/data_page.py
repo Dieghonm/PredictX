@@ -8,6 +8,15 @@ DataFrame = pd.DataFrame
 FileUploader = st.runtime.uploaded_file_manager.UploadedFile
 PathLike = Union[str, Path]
 
+def newdata():
+    st.session_state.df = None
+    st.session_state.outlier_check = False
+    st.session_state.target = None
+    st.session_state.split = None
+    st.session_state.datetime = False
+    st.session_state.normalization = False
+    st.session_state.dummies = False
+
 def mostrar():
     """Página principal para carregamento de dados na aplicação de Scoragem de Crédito."""
     st.title("📂 Escolha dos Dados")
@@ -41,6 +50,7 @@ def _handle_file_upload():
     if uploaded_file:
         df = _load_uploaded_file(uploaded_file)
         if df is not None:
+            newdata()
             st.session_state.df = df
             st.success(f"✅ Arquivo {uploaded_file.name} carregado com sucesso.")
 
@@ -77,6 +87,7 @@ def _handle_demo_file():
                 raise FileNotFoundError(f"Arquivo de demonstração não encontrado em {demo_file}")
             
             df = pd.read_feather(demo_file)
+            newdata()
             st.session_state.df = df
             st.success("✅ Arquivo de demonstração carregado.")
         except Exception as e:

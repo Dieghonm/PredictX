@@ -32,6 +32,8 @@ def inicializar_session_state():
         st.session_state.datetime = False
     if 'normalization' not in st.session_state:
         st.session_state.normalization = False
+    if 'dummies' not in st.session_state:
+        st.session_state.dummies = False
 
 
 # Navegação entre páginas

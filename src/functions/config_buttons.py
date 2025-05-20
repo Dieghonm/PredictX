@@ -14,26 +14,31 @@ def config_buttons():
                 if st.session_state.outlier_check:
                     if st.button("Outlier"):
                         st.session_state.outlier_check = False
+                        st.rerun()
             
             with col2:
                 if st.session_state.datetime:
                     if st.button("Converter DateTime"):
                         st.session_state.datetime = False
+                        st.rerun()
 
             with col3:
                 if st.session_state.normalization:            
                     if st.button("normalização"):
                         st.session_state.normalization = None
+                        st.rerun()
             
             with col4:
                 if st.session_state.target:
                     if st.button("Novo target"):
                         st.session_state.target = None
+                        st.rerun()
             
             with col5:
                 if st.session_state.split:            
                     if st.button("Alterar spliting"):
                         st.session_state.split = None
+                        st.rerun()
 
 
 
