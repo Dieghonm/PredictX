@@ -79,8 +79,3 @@ def mostrar():
 
     else:
         st.warning("⚠️ Carregue os dados na aba **Data**.")
-
-    st.info(f"**Teste** `{st.session_state.target, st.session_state.split}`")
-                    
-
-

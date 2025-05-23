@@ -34,6 +34,12 @@ def inicializar_session_state():
         st.session_state.normalization = False
     if 'dummies' not in st.session_state:
         st.session_state.dummies = False
+    if "df_treino" not in st.session_state:
+        st.session_state.df_treino = None
+    if "df_validation" not in st.session_state:
+        st.session_state.df_validation = None
+    if "df_test" not in st.session_state:
+        st.session_state.df_test = None
 
 
 # Navegação entre páginas
