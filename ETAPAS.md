@@ -13,28 +13,28 @@
 ---
 
 ### **3. Pré-processamento e Limpeza**
-- **Tratamento de Valores Ausentes**: Remoção, imputação (média, mediana) ou modelagem.
-- **Tratamento de Outliers**: Identificação e remoção ou transformação.
-- **Dados Duplicados**: Remoção ou consolidação.
-- **Normalização/Padronização**: Escalonamento de features (ex.: MinMax, Z-score).
-- **Codificação de Variáveis Categóricas**: One-Hot Encoding, Label Encoding.
-- **Engenharia de Features**: Criação de novas variáveis (ex.: extrair dia/mês de uma data).
+- **Tratamento de Valores Ausentes**: Remoção, imputação (média, mediana) ou modelagem. ✅
+- **Tratamento de Outliers**: Identificação e remoção ou transformação. ✅
+- **Dados Duplicados**: Remoção ou consolidação. ✅
+- **Normalização/Padronização**: Escalonamento de features (ex.: MinMax, Z-score). ✅
+- **Codificação de Variáveis Categóricas**: One-Hot Encoding, Label Encoding. ✅
+- **Engenharia de Features**: Criação de novas variáveis (ex.: extrair dia/mês de uma data). ✅
 
 ---
 
 ### **4. Análise Exploratória de Dados (EDA)**
 - **Estatísticas Descritivas**: Média, desvio padrão, correlações.
 - **Visualização**: Gráficos (histogramas, boxplots, scatter plots) para identificar padrões.
-- **Seleção de Features**: Identificar variáveis relevantes (ex.: correlação com o target).
+- **Seleção de Features**: Identificar variáveis relevantes (ex.: correlação com o target). ✅
 
 ---
 
 ### **5. Divisão dos Dados**
-- **Treino, Validação e Teste**: 
-  - **Treino** (70-80%): Ajustar o modelo.
-  - **Validação** (10-15%): Ajustar hiperparâmetros.
-  - **Teste** (10-15%): Avaliação final (dados nunca vistos).
-- **Validação Cruzada**: Técnicas como k-fold para evitar overfitting.
+- **Treino, Validação e Teste**:  ✅
+  - **Treino** (70-80%): Ajustar o modelo. ✅
+  - **Validação** (10-15%): Ajustar hiperparâmetros. ✅
+  - **Teste** (10-15%): Avaliação final (dados nunca vistos). ✅
+- **Validação Cruzada**: Técnicas como k-fold para evitar overfitting. 
 
 ---
 

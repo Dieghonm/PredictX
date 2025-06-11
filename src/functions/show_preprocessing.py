@@ -38,8 +38,9 @@ def show_preprocessing_results():
                     st.session_state.df_treino = st.session_state.df_treino.drop(columns=colunas_para_remover)
                     st.session_state.df_validation = st.session_state.df_validation.drop(columns=colunas_para_remover)
                     st.session_state.df_teste = st.session_state.df_teste.drop(columns=colunas_para_remover)
-                    st.success(f"Colunas removidas: {', '.join(colunas_para_remover)}")
-                    st.rerun()  # Atualiza a interface
+                    st.success(f"Colunas removidas: {', '.join(colunas_para_remover)} => Clique em Modelagem para continuar")
+                    st.rerun()  
+                    st.session_state.clean_df = True
                 else:
                     st.warning("Nenhuma coluna selecionada!")
             
@@ -65,21 +66,23 @@ def show_preprocessing_results():
                     df_teste = df_temp[df_temp['data'] > data_corte2].drop('data', axis=1)
                     st.write(f"**Total de Registros para Teste: {len(df_teste)}**")            
                     st.dataframe(df_teste.head())
+                    st.button("Gravar dados", on_click=toggle_gravar(df_treino, df_validation, df_teste))
 
                 elif split['method'] == 'percentage':                
-                    train_df, temp_df = train_test_split(df, test_size=(100 - split['train'])/100, random_state=42)
+                    df_treino, temp_df = train_test_split(df, test_size=(100 - split['train'])/100, random_state=42)
                     proporcao_teste = split['test'] / (split['validation'] + split['test'])
-                    val_df, test_df = train_test_split(temp_df, test_size=proporcao_teste, random_state=42)
+                    df_validation, df_teste = train_test_split(temp_df, test_size=proporcao_teste, random_state=42)
 
-                    st.write(f"**Total de Registros para Treino: {len(train_df)}**")
-                    st.dataframe(train_df.head())
-                    st.write(f"**Total de Registros para Validação: {len(val_df)}**")
-                    st.dataframe(val_df.head())
-                    st.write(f"**Total de Registros para Teste: {len(test_df)}**")
-                    st.dataframe(test_df.head())
+                    st.write(f"**Total de Registros para Treino: {len(df_treino)}**")
+                    st.dataframe(df_treino.head())
+                    st.write(f"**Total de Registros para Validação: {len(df_validation)}**")
+                    st.dataframe(df_validation.head())
+                    st.write(f"**Total de Registros para Teste: {len(df_teste)}**")
+                    st.dataframe(df_teste.head())
+                    st.button("Gravar dados", on_click=toggle_gravar(df_treino, df_validation, df_teste))
                 else:
                     st.subheader("Ainda nao implementado")
-                st.button("Gravar dados", on_click=toggle_gravar(train_df, val_df, test_df))
+                
             else:
                 if st.session_state.split['method'] == 'temporal':
                     # Mostra estatísticas básicas em datas

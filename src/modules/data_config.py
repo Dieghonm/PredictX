@@ -11,7 +11,8 @@ from functions import (
     target_selection,
     data_splitting,
     config_buttons,
-    show_preprocessing
+    show_preprocessing,
+    model_optimization
 )
 
 def _setup_page_config():
@@ -30,6 +31,7 @@ def mostrar():
     
     if st.session_state.df is not None:
         df = st.session_state.df.copy()
+        
         colunas = df.columns.tolist()
         numeric_cols = process_outliers.get_numeric_columns(df)
 
@@ -51,18 +53,6 @@ def mostrar():
 
         elif not st.session_state.normalization:
             process_normalization.normalizar_dataframe(df)
-            
-        elif False:
-            st.info(f"scaling...")
-            
-        elif False:
-            st.info(f"encoding")
-            
-        elif False:
-            st.info(f"else")
-            
-        elif False:
-            st.info(f"else")
 
         elif not st.session_state.target :
             target_selection.select_target(df, colunas)
@@ -73,8 +63,13 @@ def mostrar():
         elif not st.session_state.split:
             data_splitting.data_splitting_options(df, colunas)
    
-        else:
+        elif st.session_state.df_treino is None:
             show_preprocessing.show_preprocessing_results()
+
+        else:
+            model_optimization.optimization()
+
+
         config_buttons.config_buttons()
 
     else:

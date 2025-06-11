@@ -1,0 +1,215 @@
+# 💳 Sistema de Escoragem de Crédito
+
+Um sistema completo desenvolvido em Streamlit para escoragem automática de crédito usando modelos de machine learning.
+
+## 🎯 Funcionalidades
+
+- **Carregamento de Modelos**: Suporte para modelos treinados em formato pickle (.pkl)
+- **Upload de Dados**: Interface para upload de arquivos CSV com dados de clientes
+- **Diagnóstico Automático**: Análise automática da estrutura do modelo e validação dos dados
+- **Escoragem em Lote**: Processamento de múltiplos registros simultaneamente
+- **Visualizações Interativas**: Gráficos e métricas para análise dos resultados
+- **Sistema de Rating**: Classificação automática em categorias (Excelente, Bom, Regular, Ruim, Péssimo)
+- **Exportação de Resultados**: Download dos resultados em formato CSV
+
+## 🏗️ Arquitetura
+
+O sistema é organizado em três telas principais:
+
+### 📁 Carregamento
+- Upload do modelo de machine learning (.pkl)
+- Upload dos dados para escoragem (.csv)
+- Diagnóstico automático do modelo
+- Validação inicial dos dados
+
+### 🔍 Diagnóstico
+- Análise detalhada da estrutura dos dados
+- Verificação de compatibilidade com o modelo
+- Análise de valores únicos e categorias
+- Identificação de possíveis problemas
+
+### 🚀 Escoragem
+- Execução da escoragem automática
+- Visualização de resultados com gráficos interativos
+- Filtros para análise detalhada
+- Download dos resultados
+
+## 🛠️ Tecnologias Utilizadas
+
+- **Streamlit**: Framework para criação da interface web
+- **Pandas**: Manipulação e análise de dados
+- **NumPy**: Computação numérica
+- **Scikit-learn**: Ferramentas de machine learning
+- **Plotly Express**: Visualizações interativas
+- **Pickle**: Serialização de modelos
+
+## 📋 Pré-requisitos
+
+```bash
+Python 3.7+
+```
+
+### Dependências
+```txt
+streamlit
+pandas
+numpy
+scikit-learn
+plotly
+pickle5 (se Python < 3.8)
+```
+
+## 🚀 Instalação
+
+1. **Clone o repositório**
+```bash
+git clone <url-do-repositorio>
+cd sistema-escoragem-credito
+```
+
+2. **Instale as dependências**
+```bash
+pip install -r requirements.txt
+```
+
+3. **Execute a aplicação**
+```bash
+streamlit run app.py
+```
+
+## 📊 Formato dos Dados
+
+### Dados de Entrada (CSV)
+O sistema espera um arquivo CSV com as seguintes colunas:
+
+#### Obrigatórias:
+- `renda`: Renda do cliente (numérico)
+- `idade`: Idade do cliente (numérico)
+- `tempo_emprego`: Tempo de emprego em anos (numérico)
+
+#### Opcionais:
+- `id_cliente`: Identificador único do cliente
+- `sexo`: Sexo do cliente (M/F)
+- `posse_de_veiculo`: Possui veículo (S/N, True/False, 1/0)
+- `posse_de_imovel`: Possui imóvel (S/N, True/False, 1/0)
+- `qtd_filhos`: Quantidade de filhos (numérico)
+- `tipo_renda`: Tipo de renda (Assalariado, Empresário, etc.)
+- `educacao`: Nível de educação (Fundamental, Médio, Superior, etc.)
+- `estado_civil`: Estado civil (Solteiro, Casado, etc.)
+- `tipo_residencia`: Tipo de residência (Própria, Alugada, etc.)
+- `qt_pessoas_residencia`: Quantidade de pessoas na residência (numérico)
+- `data_ref`: Data de referência (formato de data)
+
+### Modelo de Machine Learning
+- Formato: Arquivo pickle (.pkl)
+- Deve ser um pipeline do scikit-learn
+- Deve incluir pré-processadores (StandardScaler, OneHotEncoder, etc.)
+- Deve ter método `predict()` e `predict_proba()`
+
+## 🔧 Funcionalidades Técnicas
+
+### Pré-processamento Automático
+- **Limpeza de dados**: Remoção de IDs, tratamento de valores nulos
+- **Padronização**: Conversão automática de formatos (booleanos, datas, etc.)
+- **Mapeamento**: Padronização de categorias (ex: Secundário → Médio)
+- **Tratamento de outliers**: Usando método IQR ou Z-score
+
+### Diagnóstico Inteligente
+- **Análise do modelo**: Extração automática das colunas esperadas
+- **Validação de tipos**: Verificação de compatibilidade de dados
+- **Mapeamento de categorias**: Identificação das categorias esperadas
+
+### Sistema de Rating
+- **Excelente**: 0% - 10% de probabilidade de inadimplência
+- **Bom**: 10% - 30% de probabilidade de inadimplência
+- **Regular**: 30% - 50% de probabilidade de inadimplência
+- **Ruim**: 50% - 70% de probabilidade de inadimplência
+- **Péssimo**: 70% - 100% de probabilidade de inadimplência
+
+## 📈 Métricas e Visualizações
+
+### Métricas Principais
+- Probabilidade média de inadimplência
+- Quantidade e percentual de alto risco
+- Quantidade e percentual de baixo risco
+- Total de registros processados
+
+### Gráficos Interativos
+- **Histograma**: Distribuição das probabilidades
+- **Gráfico de barras**: Distribuição por rating
+- **Filtros**: Por rating e faixa de probabilidade
+
+## 💾 Exportação de Resultados
+
+O sistema gera um arquivo CSV com as seguintes colunas adicionais:
+- `score_probabilidade`: Probabilidade de inadimplência (0-1)
+- `score_classe`: Classificação binária (0/1)
+- `score_rating`: Rating qualitativo (Excelente/Bom/Regular/Ruim/Péssimo)
+
+## 🔒 Segurança e Performance
+
+### Cache Inteligente
+- Cache automático do carregamento de modelos
+- Otimização de performance para grandes volumes
+- Função de limpeza de cache disponível
+
+### Tratamento de Erros
+- Validação robusta de dados de entrada
+- Mensagens de erro informativas
+- Recuperação automática de falhas
+
+## 🎨 Interface do Usuário
+
+### Características
+- **Design responsivo**: Adapta-se a diferentes tamanhos de tela
+- **Navegação intuitiva**: Sidebar com status em tempo real
+- **Feedback visual**: Indicadores de progresso e status
+- **Experiência fluida**: Transições suaves entre telas
+
+### Elementos Visuais
+- ✅ Indicadores de sucesso
+- ❌ Alertas de erro
+- ⚠️ Avisos importantes
+- 📊 Métricas destacadas
+- 🎉 Celebrações de conclusão
+
+## 🐛 Solução de Problemas
+
+### Problemas Comuns
+
+1. **Erro de carregamento do modelo**
+   - Verifique se o arquivo .pkl está no diretório correto
+   - Confirme se o modelo foi treinado com scikit-learn compatível
+
+2. **Dados não reconhecidos**
+   - Verifique se as colunas estão no formato correto
+   - Execute o diagnóstico para identificar incompatibilidades
+
+3. **Erro durante a escoragem**
+   - Verifique se há valores nulos em colunas obrigatórias
+   - Confirme se os tipos de dados estão corretos
+
+### Logs e Debug
+O sistema inclui mensagens detalhadas de erro para facilitar o debug.
+
+## 📞 Suporte
+
+Para questões técnicas ou bugs, verifique:
+1. Se todas as dependências estão instaladas
+2. Se os dados estão no formato correto
+3. Se o modelo é compatível com o sistema
+
+## 🔄 Versões
+
+- **v1.0**: Versão inicial com funcionalidades básicas
+- Carregamento de modelos e dados
+- Escoragem automática
+- Interface web completa
+
+## 📝 Licença
+
+Este projeto está sob licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+
+---
+
+**Desenvolvido com ❤️ usando Streamlit**

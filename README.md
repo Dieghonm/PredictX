@@ -2,10 +2,10 @@
 
 1. Subir no GITHUB todos os jupyter notebooks/códigos que você desenvolveu nesse ultimo módulo
 1. Gerar um arquivo python (.py) com todas as funções necessárias para rodar no streamlit a escoragem do arquivo de treino
-    - Criar um .py
-    - Criar um carregador de csv no streamlit 
-    - Subir um csv no streamlit 
-    - Criar um pipeline de pré processamento dos dados
+    - Criar um .py ✅
+    - Criar um carregador de csv no streamlit ✅
+    - Subir um csv no streamlit ✅
+    - Criar um pipeline de pré processamento dos dados ✅
     - Utilizar o modelo treinado para escorar a base 
         - nome_arquivo = 'model_final.pkl'
 1. Gravar um vídeo da tela do streamlit em funcionamento (usando o próprio streamlit (temos aula disso) ou qlqr outra forma de gravação).
@@ -27,32 +27,32 @@ Este projeto fornece uma interface intuitiva para análise exploratória de dado
 
 ## 🔧 Funcionalidades Principais
 
-### 1. Pré-processamento de Dados
+### 1. Pré-processamento de Dados ✅
 - **Verificação de Dados Duplicados**
   - Identificação automática de linhas duplicadas
   - Visualização de estatísticas de duplicação
   - Opções flexíveis para tratamento (manter primeira/última ocorrência ou remover todas)
 
-- **Tratamento de Valores Faltantes**
+- **Tratamento de Valores Faltantes** ✅
   - Análise percentual de missing values por coluna
   - Métodos de preenchimento:
     - Zero, Média, Mediana, Moda
     - Valor personalizado
   - Opção de remoção de linhas com missing values
 
-### 2. Análise de Outliers
+### 2. Análise de Outliers ✅
 - Detecção automática usando método IQR
 - Visualização gráfica dos outliers
 - Sugestão automática de limiares para corte
 - Opção de remoção controlada de outliers
 
-### 3. Configuração do Modelo
+### 3. Configuração do Modelo ✅
 - **Seleção da Variável Alvo**
   - Análise de valores únicos
   - Alertas para colunas com alta cardinalidade
 
 - **Divisão dos Dados**
-  - Métodos disponíveis:
+  - Métodos disponíveis: ✅
     - Por porcentagem (train/val/test)
     - Por coluna específica (categórica ou temporal)
   - Controle fino dos conjuntos de dados

@@ -24,7 +24,7 @@ def criar_dummies_dataframe(df):
     colunas_categoricas = df.select_dtypes(include=['object', 'category']).columns.tolist()
     
     if not colunas_categoricas:
-        st.warning("Nenhuma coluna categórica encontrada!")
+        st.session_state.dummies = True
         return df
     
     colunas_selecionadas = st.multiselect(

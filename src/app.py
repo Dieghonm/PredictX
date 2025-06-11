@@ -1,7 +1,7 @@
 import streamlit as st
 from modules import (
     data_page,
-    planilha_page,
+    modelagem_page,
     graficos_page,
     opcoes_page,
     testes_page,
@@ -40,7 +40,8 @@ def inicializar_session_state():
         st.session_state.df_validation = None
     if "df_test" not in st.session_state:
         st.session_state.df_test = None
-
+    if "clean_df" not in st.session_state:
+        st.session_state.clean_df = None
 
 # Navegação entre páginas
 def navegacao_sidebar():
@@ -50,7 +51,7 @@ def navegacao_sidebar():
     paginas = {
         "📂 Data": "Data",
         "🛠️ Data config" : "Data config",
-        "📊 Planilha": "Planilha",
+        "📊 Modelagem": "Modelagem",
         "📈 Gráficos": "Gráficos",
         "🔧 Opções": "Opções",
         "🔧 Testes": "Testes"
@@ -65,7 +66,7 @@ def renderizar_pagina():
     paginas = {
         "Data": data_page.mostrar,
         "Data config": data_config.mostrar,
-        "Planilha": planilha_page.mostrar,
+        "Modelagem": modelagem_page.mostrar,
         "Gráficos": graficos_page.mostrar,
         "Opções": opcoes_page.mostrar,
         "Testes": testes_page.mostrar
