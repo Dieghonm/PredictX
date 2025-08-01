@@ -227,6 +227,11 @@ def _display_loaded_data():
                     st.dataframe(df[numeric_cols].describe(), height=300)
                 else:
                     st.info("Nenhuma coluna numérica encontrada")
+        
+        # Botão para ir para próxima página (corrigido)
+        if st.button("Ir para Data Config"):
+            st.session_state.pagina = 'Data config'
+            st.rerun()
 
 # Função adicional para verificar disponibilidade dos arquivos
 def check_demo_files_availability():

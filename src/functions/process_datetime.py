@@ -28,7 +28,8 @@ def datetime_options(df):
         
         if not date_columns:
             st.info("Nenhuma coluna com formato de data identificada.")
-            return df
+            st.session_state.datetime = True
+            st.rerun()
     
         selected_dates = st.multiselect(
             "Selecione colunas para converter para datetime:",

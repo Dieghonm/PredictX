@@ -25,6 +25,10 @@ def criar_dummies_dataframe(df):
     
     if not colunas_categoricas:
         st.session_state.dummies = True
+        # Botão para ir para próxima página (quando não há colunas categóricas)
+        if st.button("Ir para Próxima Etapa"):
+            st.session_state.pagina = 'Data config'
+            st.rerun()
         return df
     
     colunas_selecionadas = st.multiselect(
@@ -77,6 +81,12 @@ def criar_dummies_dataframe(df):
         with col2:
             if st.button("💾 Gravar Alterações"):
                 st.session_state.dummies = True
-                st.rerun()
+                st.success("✅ Alterações gravadas com sucesso!")
+    
+    # Botão para ir para próxima página (sempre visível no final)
+    st.markdown("---")  # Linha separadora
+    if st.button("Ir para Próxima Etapa"):
+        st.session_state.pagina = 'Data config'
+        st.rerun()
     
     return st.session_state.df if 'df' in st.session_state else df
