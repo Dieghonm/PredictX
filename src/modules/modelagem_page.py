@@ -1,8 +1,16 @@
 import streamlit as st
 import pandas as pd
 
-from functions import (
-   models_regression,
+from functions.models_regression import (
+    linear_regression,
+    ridge_regression,
+    lasso_regression
+)
+from functions.models_classification import (
+    logistic_regression,
+    decision_tree,
+    random_forest,
+    svm_model
 )
 
 def _setup_page_config():
@@ -37,19 +45,20 @@ def mostrar():
                 with col1:
                     if st.button("Regressão Linear"):
                         st.session_state.modelo_selecionado = "Regressão Linear"
-                        models_regression.linear_regression(df_treino, df_validation, df_teste, target)
-                        st.success("Modelo de Regressão Linear selecionado!")
-                        # Exemplo: rodar_regressao_linear()
+                        linear_regression(df_treino, df_validation, df_teste, target)
+                        st.success("Modelo de Regressão Linear executado!")
                         
                 with col2:
                     if st.button("Regressão Ridge"):
                         st.session_state.modelo_selecionado = "Regressão Ridge"
-                        st.success("Modelo de Regressão Ridge selecionado!")
+                        ridge_regression(df_treino, df_validation, df_teste, target)
+                        st.success("Modelo de Regressão Ridge executado!")
                         
                 with col3:
                     if st.button("Regressão Lasso"):
                         st.session_state.modelo_selecionado = "Regressão Lasso"
-                        st.success("Modelo de Regressão Lasso selecionado!")
+                        lasso_regression(df_treino, df_validation, df_teste, target)
+                        st.success("Modelo de Regressão Lasso executado!")
             
             with tab2:
                 st.header("Modelos de Classificação")
@@ -58,49 +67,40 @@ def mostrar():
                 with col1:
                     if st.button("Regressão Logística"):
                         st.session_state.modelo_selecionado = "Regressão Logística"
-                        st.success("Modelo de Regressão Logística selecionado!")
+                        logistic_regression(df_treino, df_validation, df_teste, target)
+                        st.success("Modelo de Regressão Logística executado!")
                         
                 with col2:
                     if st.button("Árvores de Decisão"):
                         st.session_state.modelo_selecionado = "Árvores de Decisão"
-                        st.success("Modelo de Árvores de Decisão selecionado!")
+                        decision_tree(df_treino, df_validation, df_teste, target)
+                        st.success("Modelo de Árvores de Decisão executado!")
                         
                 with col3:
                     if st.button("Random Forest"):
                         st.session_state.modelo_selecionado = "Random Forest"
-                        st.success("Modelo de Random Forest selecionado!")
+                        random_forest(df_treino, df_validation, df_teste, target)
+                        st.success("Modelo de Random Forest executado!")
                         
                 with col4:
                     if st.button("SVM"):
                         st.session_state.modelo_selecionado = "SVM"
-                        st.success("Modelo de SVM selecionado!")
+                        svm_model(df_treino, df_validation, df_teste, target)
+                        st.success("Modelo de SVM executado!")
             
             with tab3:
                 st.header("Redes Neurais")
                 if st.button("Deep Learning"):
                     st.session_state.modelo_selecionado = "Deep Learning"
-                    st.success("Modelo de Deep Learning selecionado!")
-                    # Aqui você poderia adicionar opções adicionais para configuração da rede
+                    st.warning("Modelo ainda não implementado!")
                 
             # Mostra o modelo selecionado (opcional)
             if 'modelo_selecionado' in st.session_state:
                 st.sidebar.markdown(f"**Modelo selecionado:** {st.session_state.modelo_selecionado}")
 
-
-
-
-
-
-
-
-
-
-
-
         else:
             st.warning("⚠️ Siga a etapa de configurações dos dados na aba **Data config**.")
 
     else:
-        
         st.warning("Por favor, carregue e prepare os dados primeiro.")
         st.warning("⚠️ Carregue os dados na aba **Data**.")
